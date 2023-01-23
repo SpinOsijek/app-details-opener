@@ -19,4 +19,14 @@ public class AppDetailsOpenerPlugin extends Plugin {
         ret.put("value", implementation.echo(value));
         call.resolve(ret);
     }
+
+    @PluginMethod
+    public void openAppInfo(PluginCall call) {
+        Activity activity = getActivity();
+        Intent intent = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
+        Uri uri = Uri.fromParts("package", activity.getPackageName(), null);
+        intent.setData(uri);
+        activity.startActivity(intent);
+        call.resolve();
+    }
 }

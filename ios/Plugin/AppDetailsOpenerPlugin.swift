@@ -15,4 +15,13 @@ public class AppDetailsOpenerPlugin: CAPPlugin {
             "value": implementation.echo(value)
         ])
     }
+
+    @objc func openAppInfo(_ call: CAPPluginCall) {
+    if let url = URL(string:UIApplication.openSettingsURLString) {
+        if UIApplication.shared.canOpenURL(url) {
+            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+        }
+    }
+    call.resolve()
+  }
 }

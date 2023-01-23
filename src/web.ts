@@ -7,4 +7,8 @@ export class AppDetailsOpenerWeb extends WebPlugin implements AppDetailsOpenerPl
     console.log('ECHO', options);
     return options;
   }
+
+  async openAppInfo(): Promise<void> {
+      throw this.unimplemented;
+  }
 }
